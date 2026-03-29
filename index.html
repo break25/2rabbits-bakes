@@ -536,46 +536,53 @@
 
     /* ── TESTIMONIALS ── */
     .testimonials {
-      background: linear-gradient(135deg, var(--blush) 0%, var(--lavender) 100%);
-      padding: 100px 48px;
+      background: var(--blush);
+      padding: 6rem;
       text-align: center;
     }
     .testimonials .section-label { justify-content: center; }
     .testimonials .section-label::before { display: none; }
+    .testimonials .section-title em { color: var(--deep-rose); }
 
     .testi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1000px;
+      gap: 2rem;
+      max-width: 1100px;
       margin: 60px auto 0;
     }
 
     .testi-card {
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 20px;
-      padding: 32px 28px;
-      border: 1px solid rgba(255,255,255,0.8);
+      background: var(--warm-white);
+      padding: 2.4rem;
       text-align: left;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
     }
     .testi-card:hover { transform: translateY(-4px); }
 
+    .testi-quote-mark {
+      font-family: var(--serif);
+      font-size: 4rem;
+      color: var(--border);
+      line-height: 0.5;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
     .testi-stars {
-      font-size: 0.9rem;
-      margin-bottom: 14px;
-      letter-spacing: 2px;
+      color: var(--rose);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
     }
 
     .testi-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
+      font-family: var(--serif);
       font-style: italic;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--charcoal);
-      margin-bottom: 20px;
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.75;
+      margin-bottom: 1.6rem;
     }
 
     .testi-author {
@@ -583,24 +590,14 @@
       align-items: center;
       gap: 12px;
     }
-    .testi-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      background: var(--blush);
-    }
+
     .testi-name {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--charcoal);
-      letter-spacing: 0.05em;
-    }
-    .testi-loc {
-      font-size: 0.75rem;
-      color: var(--charcoal-light);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
     }
 
     /* ── HOW TO ORDER ── */
@@ -982,42 +979,33 @@
   <!-- TESTIMONIALS -->
   <section class="testimonials" id="love">
     <p class="section-label reveal">Reviews</p>
-    <h2 class="section-title reveal">What our sweethearts say</h2>
+    <h2 class="section-title reveal">Our sweethearts leave <em>honest notes</em>.</h2>
 
     <div class="testi-grid">
       <div class="testi-card reveal" style="transition-delay: 0.05s">
-        <div class="testi-stars">🩷🩷🩷🩷🩷</div>
-        <p class="testi-quote">"The birthday cake was absolutely stunning. My daughter cried (happy tears!) when she saw it. Tasted even better than it looked — which felt impossible."</p>
+        <span class="testi-quote-mark">“</span>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">The birthday cake was absolutely stunning. My daughter loved it, and for once, the cake tasted just as good as it looked on the table.</p>
         <div class="testi-author">
-          <div class="testi-avatar">🌸</div>
-          <div>
-            <div class="testi-name">Priya M.</div>
-            <div class="testi-loc">Bangalore</div>
-          </div>
+          <div class="testi-name">Priya M. · Bangalore</div>
         </div>
       </div>
 
       <div class="testi-card reveal" style="transition-delay: 0.1s">
-        <div class="testi-stars">🩷🩷🩷🩷🩷</div>
-        <p class="testi-quote">"Ordered the bunny cookie set for my anniversary and they were the most precious things I've ever seen. Packaging was so pretty I almost didn't want to open it!"</p>
+        <span class="testi-quote-mark">“</span>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">The bunny cookie set was beautifully detailed. The packaging was so careful and pretty that I honestly hesitated to open it.</p>
         <div class="testi-author">
-          <div class="testi-avatar">🐰</div>
-          <div>
-            <div class="testi-name">Riya K.</div>
-            <div class="testi-loc">Bangalore</div>
-          </div>
+          <div class="testi-name">Riya K. · Bangalore</div>
         </div>
       </div>
 
       <div class="testi-card reveal" style="transition-delay: 0.15s">
-        <div class="testi-stars">🩷🩷🩷🩷🩷</div>
-        <p class="testi-quote">"I've ordered three times now and every time I'm blown away by the care they put in. You can genuinely taste that these are made with love. Repeat customer for life."</p>
+        <span class="testi-quote-mark">“</span>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">This was my third order, and the attention to detail is always consistent. You can tell they actually care about what goes into the oven.</p>
         <div class="testi-author">
-          <div class="testi-avatar">🍰</div>
-          <div>
-            <div class="testi-name">Ananya S.</div>
-            <div class="testi-loc">Bangalore</div>
-          </div>
+          <div class="testi-name">Ananya S. · Bangalore</div>
         </div>
       </div>
     </div>
