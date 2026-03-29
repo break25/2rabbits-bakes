@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menu - 2 Rabbits Bakes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="menu.css" />
 </head>
 <body>
@@ -17,14 +17,18 @@
       <li><a href="menu.html">Menu</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#find-us">Find Us</a></li>
-      <li><a href="https://www.instagram.com" class="nav-cta" target="_blank">Follow us @2rabbitsbakes</a></li>
+      <li><a href="https://wa.me/918884449239" class="nav-cta" target="_blank">Order via WhatsApp</a></li>
     </ul>
   </nav>
 
   <!-- PAGE HERO -->
   <header class="menu-hero">
     <h1 class="hero-title">Everything we make.</h1>
-    <p class="hero-sub">Fresh from our kitchen · Koramangala, Bangalore</p>
+    <div class="hero-marquee-container">
+      <div class="hero-marquee">
+        Cakes · Desserts & Pastries · Drinks · Quick Bites · Gift Boxes · Cakes · Desserts & Pastries · Drinks · Quick Bites · Gift Boxes
+      </div>
+    </div>
   </header>
 
   <!-- STICKY CATEGORY TABS -->
@@ -41,93 +45,99 @@
   <main class="menu-content">
     
     <!-- CATEGORY: CAKES -->
-    <section id="cakes" class="menu-section">
-      <h2 class="category-title">Cakes</h2>
+    <section id="cakes" class="menu-section bg-pink">
+      <svg class="torn-edge top-edge" viewBox="0 0 1200 40" preserveAspectRatio="none">
+        <path d="M0,40 L0,10 L30,25 L70,8 L110,22 L150,5 L200,28 L240,12 L280,25 L320,6 L360,22 L400,9 L440,26 L480,11 L520,29 L560,10 L600,24 L640,7 L680,26 L720,12 L760,28 L800,9 L840,24 L880,6 L920,27 L960,11 L1000,25 L1040,8 L1080,22 L1120,5 L1160,26 L1200,9 L1200,40 Z"></path>
+      </svg>
+      <div class="section-divider">
+        <h2 class="category-title">Cakes</h2>
+      </div>
       <div class="menu-grid">
-        <article class="menu-item">
+        <!-- 1 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop" alt="Blueberry Cheesecake">
+            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop&crop=center" alt="Blueberry Cheesecake">
           </div>
           <h3 class="item-name">Blueberry Cheesecake</h3>
           <p class="item-desc">Creamy NY style cheesecake topped with our house-made blueberry compote.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 2 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" alt="Devil's Chocolate Cake">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop&crop=center" alt="Devil's Chocolate Cake">
           </div>
           <h3 class="item-name">Devil's Chocolate Cake</h3>
           <p class="item-desc">Dark, decadent chocolate sponge layered with rich truffle ganache.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 3 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=400&fit=crop" alt="Black Forest Cake">
+            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=400&fit=crop&crop=center" alt="Black Forest Cake">
           </div>
           <h3 class="item-name">Black Forest Cake</h3>
           <p class="item-desc">Classic chocolate sponge layered with fresh cream and dark cherry compote.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 4 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=400&h=400&fit=crop" alt="White Forest Cake">
+            <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=400&h=400&fit=crop&crop=center" alt="White Forest Cake">
           </div>
           <h3 class="item-name">White Forest Cake</h3>
           <p class="item-desc">Vanilla bean sponge layered with white chocolate shavings and sweet cherries.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 5 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=400&fit=crop" alt="Butterscotch Cake">
+            <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400&h=400&fit=crop&crop=center" alt="Butterscotch Cake">
           </div>
           <h3 class="item-name">Butterscotch Cake</h3>
           <p class="item-desc">Light sponge dotted with crunchy praline and smooth butterscotch cream.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 6 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=400&fit=crop" alt="Lotus Cheesecake">
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=400&fit=crop&crop=center" alt="Lotus Cheesecake">
           </div>
           <h3 class="item-name">Lotus Cheesecake</h3>
           <p class="item-desc">Biscoff butter blended into a rich cheesecake, topped with a Lotus crumb.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 7 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=400&h=400&fit=crop" alt="Oreo Cheesecake">
+            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=400&h=400&fit=crop&crop=center" alt="Oreo Cheesecake">
           </div>
           <h3 class="item-name">Oreo Cheesecake</h3>
           <p class="item-desc">Cookies and cream cheesecake sitting perfectly on a dark chocolate cookie crust.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 8 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=400&h=400&fit=crop" alt="New York Cheesecake">
+            <img src="https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=400&h=400&fit=crop&crop=center" alt="New York Cheesecake">
           </div>
           <h3 class="item-name">New York Cheesecake</h3>
           <p class="item-desc">Dense, classic baked cheesecake with a buttery graham cracker base.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 9 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&h=400&fit=crop" alt="Japanese Cheesecake">
+            <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&h=400&fit=crop&crop=center" alt="Japanese Cheesecake">
           </div>
           <h3 class="item-name">Japanese Cheesecake</h3>
           <p class="item-desc">The famous jiggly, cloud-like cotton cheesecake that melts softly in your mouth.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 10 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1488477181212-f594c6d17498?w=400&h=400&fit=crop" alt="Romantic Cheesecake">
+            <img src="https://images.unsplash.com/photo-1488477181212-f594c6d17498?w=400&h=400&fit=crop&crop=center" alt="Romantic Cheesecake">
           </div>
           <h3 class="item-name">Romantic Cheesecake</h3>
           <p class="item-desc">A soft, blush-pink cheesecake delicately swirled with strawberry and rose.</p>
@@ -137,57 +147,63 @@
     </section>
 
     <!-- CATEGORY: DESSERTS & PASTRIES -->
-    <section id="desserts" class="menu-section">
-      <h2 class="category-title">Desserts & Pastries</h2>
+    <section id="desserts" class="menu-section bg-cream">
+      <svg class="torn-edge top-edge" viewBox="0 0 1200 40" preserveAspectRatio="none">
+        <path d="M0,40 L0,10 L30,25 L70,8 L110,22 L150,5 L200,28 L240,12 L280,25 L320,6 L360,22 L400,9 L440,26 L480,11 L520,29 L560,10 L600,24 L640,7 L680,26 L720,12 L760,28 L800,9 L840,24 L880,6 L920,27 L960,11 L1000,25 L1040,8 L1080,22 L1120,5 L1160,26 L1200,9 L1200,40 Z"></path>
+      </svg>
+      <div class="section-divider">
+        <h2 class="category-title">Desserts & Pastries</h2>
+      </div>
       <div class="menu-grid">
-        <article class="menu-item">
+        <!-- 11 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=400&fit=crop" alt="Lotus Doughnut">
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=400&fit=crop&crop=center" alt="Lotus Doughnut">
           </div>
           <h3 class="item-name">Lotus Doughnut</h3>
           <p class="item-desc">Fluffy brioche doughnut glazed with rich Biscoff spread and biscuit crumbs.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 12 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1527904324834-3bda86da6771?w=400&h=400&fit=crop" alt="Chocolate Doughnut">
+            <img src="https://images.unsplash.com/photo-1527904324834-3bda86da6771?w=400&h=400&fit=crop&crop=center" alt="Chocolate Doughnut">
           </div>
           <h3 class="item-name">Chocolate Doughnut</h3>
           <p class="item-desc">Dark Belgian chocolate glaze dripping over a pillowy soft, golden dough.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 13 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" alt="Strawberry Pastry">
+            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop&crop=center" alt="Strawberry Pastry">
           </div>
           <h3 class="item-name">Strawberry Pastry</h3>
           <p class="item-desc">Light vanilla pastry layered effortlessly with sweet, fresh strawberry cream.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 14 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop" alt="Chocolate Pastry">
+            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop&crop=center" alt="Chocolate Pastry">
           </div>
           <h3 class="item-name">Chocolate Pastry</h3>
           <p class="item-desc">A dense, decadent slice of absolute pure chocolate indulgence.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 15 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?w=400&h=400&fit=crop" alt="Fruit Tart">
+            <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?w=400&h=400&fit=crop&crop=center" alt="Fruit Tart">
           </div>
           <h3 class="item-name">Fruit Tart</h3>
           <p class="item-desc">Crisp buttery shell filled with vanilla custard and seasonal fresh fruits.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 16 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=400&h=400&fit=crop" alt="Brownie Slice">
+            <img src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=400&h=400&fit=crop&crop=center" alt="Brownie Slice">
           </div>
           <h3 class="item-name">Brownie Slice</h3>
           <p class="item-desc">Fudgy, dark chocolate brownie with a perfectly crackled, shiny top.</p>
@@ -197,75 +213,81 @@
     </section>
 
     <!-- CATEGORY: DRINKS -->
-    <section id="drinks" class="menu-section">
-      <h2 class="category-title">Drinks</h2>
+    <section id="drinks" class="menu-section bg-pink">
+      <svg class="torn-edge top-edge" viewBox="0 0 1200 40" preserveAspectRatio="none">
+        <path d="M0,40 L0,10 L30,25 L70,8 L110,22 L150,5 L200,28 L240,12 L280,25 L320,6 L360,22 L400,9 L440,26 L480,11 L520,29 L560,10 L600,24 L640,7 L680,26 L720,12 L760,28 L800,9 L840,24 L880,6 L920,27 L960,11 L1000,25 L1040,8 L1080,22 L1120,5 L1160,26 L1200,9 L1200,40 Z"></path>
+      </svg>
+      <div class="section-divider">
+        <h2 class="category-title">Drinks</h2>
+      </div>
       <div class="menu-grid">
-        <article class="menu-item">
+        <!-- 17 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1572490122747-3a3cca73e5eb?w=400&h=400&fit=crop" alt="Lotus Shake">
+            <img src="https://images.unsplash.com/photo-1572490122747-3a3cca73e5eb?w=400&h=400&fit=crop&crop=center" alt="Lotus Shake">
           </div>
           <h3 class="item-name">Lotus Shake</h3>
           <p class="item-desc">A thick, indulgent milkshake blended smooth with Biscoff spread and cookies.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 18 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=400&fit=crop" alt="Oreo Shake">
+            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=400&fit=crop&crop=center" alt="Oreo Shake">
           </div>
           <h3 class="item-name">Oreo Shake</h3>
           <p class="item-desc">Classic cookies and cream blended into a frosty, nostalgic delight.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 19 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=400&h=400&fit=crop" alt="Strawberry Shake">
+            <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=400&h=400&fit=crop&crop=center" alt="Strawberry Shake">
           </div>
           <h3 class="item-name">Strawberry Shake</h3>
           <p class="item-desc">Made with real strawberries and rich vanilla ice cream.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 20 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=400&fit=crop" alt="Cold Coffee">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=400&fit=crop&crop=center" alt="Cold Coffee">
           </div>
           <h3 class="item-name">Cold Coffee</h3>
           <p class="item-desc">The perfect icy kick of strong espresso and frosty milk.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 21 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1542990253-a781e9c788b8?w=400&h=400&fit=crop" alt="Hot Chocolate">
+            <img src="https://images.unsplash.com/photo-1542990253-a781e9c788b8?w=400&h=400&fit=crop&crop=center" alt="Hot Chocolate">
           </div>
           <h3 class="item-name">Hot Chocolate</h3>
           <p class="item-desc">Rich, dark drinking chocolate topped with a warm, fluffy marshmallow.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 22 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=400&fit=crop" alt="Fresh Lime Soda">
+            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=400&fit=crop&crop=center" alt="Fresh Lime Soda">
           </div>
           <h3 class="item-name">Fresh Lime Soda</h3>
           <p class="item-desc">A zesty, sparkling, and refreshing cooler to beat the Bangalore heat.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 23 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?w=400&h=400&fit=crop" alt="Watermelon Juice">
+            <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?w=400&h=400&fit=crop&crop=center" alt="Watermelon Juice">
           </div>
           <h3 class="item-name">Watermelon Juice</h3>
           <p class="item-desc">Cold pressed, sweet, and perfectly 100% natural red refreshment.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 24 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=400&fit=crop" alt="Mango Smoothie">
+            <img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&h=400&fit=crop&crop=center" alt="Mango Smoothie">
           </div>
           <h3 class="item-name">Mango Smoothie</h3>
           <p class="item-desc">Seasonal, sweet, ripe mangoes blended thick and incredibly frosty.</p>
@@ -275,57 +297,63 @@
     </section>
 
     <!-- CATEGORY: QUICK BITES -->
-    <section id="bites" class="menu-section">
-      <h2 class="category-title">Quick Bites</h2>
+    <section id="bites" class="menu-section bg-cream">
+      <svg class="torn-edge top-edge" viewBox="0 0 1200 40" preserveAspectRatio="none">
+        <path d="M0,40 L0,10 L30,25 L70,8 L110,22 L150,5 L200,28 L240,12 L280,25 L320,6 L360,22 L400,9 L440,26 L480,11 L520,29 L560,10 L600,24 L640,7 L680,26 L720,12 L760,28 L800,9 L840,24 L880,6 L920,27 L960,11 L1000,25 L1040,8 L1080,22 L1120,5 L1160,26 L1200,9 L1200,40 Z"></path>
+      </svg>
+      <div class="section-divider">
+        <h2 class="category-title">Quick Bites</h2>
+      </div>
       <div class="menu-grid">
-        <article class="menu-item">
+        <!-- 25 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&h=400&fit=crop" alt="Veg Burger">
+            <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&h=400&fit=crop&crop=center" alt="Veg Burger">
           </div>
           <h3 class="item-name">Veg Burger</h3>
           <p class="item-desc">A crisp vegetable patty topped with fresh lettuce, tomatoes, and our house sauce.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 26 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop" alt="Chicken Burger">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop&crop=center" alt="Chicken Burger">
           </div>
           <h3 class="item-name">Chicken Burger</h3>
           <p class="item-desc">Juicy grilled chicken breast stacked with melted cheese and fresh greens.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 27 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&h=400&fit=crop" alt="Veg Wrap">
+            <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&h=400&fit=crop&crop=center" alt="Veg Wrap">
           </div>
           <h3 class="item-name">Veg Wrap</h3>
           <p class="item-desc">Warm roasted vegetables and tangy sauces wrapped tight in a soft flour tortilla.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 28 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=400&fit=crop" alt="Margherita Pizza">
+            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=400&fit=crop&crop=center" alt="Margherita Pizza">
           </div>
           <h3 class="item-name">Margherita Pizza</h3>
           <p class="item-desc">Classic pulled mozzarella and fresh basil leaves on our handmade thin crust.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 29 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&h=400&fit=crop" alt="Loaded Fries">
+            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&h=400&fit=crop&crop=center" alt="Loaded Fries">
           </div>
           <h3 class="item-name">Loaded Fries</h3>
           <p class="item-desc">Crisp fries completely smothered in velvety cheese sauce and savory toppings.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 30 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=400&h=400&fit=crop" alt="Cheese Fries">
+            <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=400&h=400&fit=crop&crop=center" alt="Cheese Fries">
           </div>
           <h3 class="item-name">Cheese Fries</h3>
           <p class="item-desc">Golden, shoestring fries dusted heavily with our special parmesan cheese blend.</p>
@@ -335,39 +363,45 @@
     </section>
 
     <!-- CATEGORY: GIFT BOXES -->
-    <section id="gifts" class="menu-section">
-      <h2 class="category-title">Gift Boxes</h2>
+    <section id="gifts" class="menu-section bg-pink">
+      <svg class="torn-edge top-edge" viewBox="0 0 1200 40" preserveAspectRatio="none">
+        <path d="M0,40 L0,10 L30,25 L70,8 L110,22 L150,5 L200,28 L240,12 L280,25 L320,6 L360,22 L400,9 L440,26 L480,11 L520,29 L560,10 L600,24 L640,7 L680,26 L720,12 L760,28 L800,9 L840,24 L880,6 L920,27 L960,11 L1000,25 L1040,8 L1080,22 L1120,5 L1160,26 L1200,9 L1200,40 Z"></path>
+      </svg>
+      <div class="section-divider">
+        <h2 class="category-title">Gift Boxes</h2>
+      </div>
       <div class="menu-grid">
-        <article class="menu-item">
+        <!-- 31 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&h=400&fit=crop" alt="Classic Gift Hamper">
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&h=400&fit=crop&crop=center" alt="Classic Gift Hamper">
           </div>
           <h3 class="item-name">Classic Gift Hamper</h3>
           <p class="item-desc">A beautiful ribbon-tied box featuring our most popular cookies and brownies.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 32 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1558636508-e0969431e544?w=400&h=400&fit=crop" alt="Birthday Cake Box">
+            <img src="https://images.unsplash.com/photo-1558636508-e0969431e544?w=400&h=400&fit=crop&crop=center" alt="Birthday Cake Box">
           </div>
           <h3 class="item-name">Birthday Cake Box</h3>
           <p class="item-desc">Everything needed for a party: a centerpiece cake, candles, and matching cookies.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 33 -->
+        <article class="menu-item large">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=400&fit=crop" alt="Cookie Assortment Box">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=400&fit=crop&crop=center" alt="Cookie Box">
           </div>
           <h3 class="item-name">Cookie Box</h3>
           <p class="item-desc">Six beautifully, meticulously hand-decorated sugar cookies wrapped with love.</p>
           <span class="item-price">₹---</span>
         </article>
-
-        <article class="menu-item">
+        <!-- 34 -->
+        <article class="menu-item small">
           <div class="circle-wrap">
-            <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=400&h=400&fit=crop" alt="Couple's Hamper">
+            <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=400&h=400&fit=crop&crop=center" alt="Couple's Hamper">
           </div>
           <h3 class="item-name">Couple's Hamper</h3>
           <p class="item-desc">A sweet, intimate assortment designed to be shared, including tarts and brownies.</p>
@@ -382,71 +416,24 @@
   <footer>
     <div class="footer-left">
       <a href="index.html" class="footer-logo">2 <em>Rabbits</em> Bakes</a>
+      <span>Koramangala, Bangalore · Open daily</span>
     </div>
+    
     <ul class="footer-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#find-us">Find Us</a></li>
-      <li><a href="https://www.instagram.com">Instagram</a></li>
     </ul>
-    <div class="footer-copy">© 2025 2 Rabbits Bakes</div>
+
+    <div class="footer-right">
+      <a href="https://www.instagram.com" class="footer-follow">Follow us <strong>@2rabbitsbakes</strong></a>
+      <span class="footer-copy">© 2025 2 Rabbits Bakes</span>
+    </div>
   </footer>
 
   <script>
-    // 1. Navbar shrink offset on scroll
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 60) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // 2. Smooth scroll for tab pills
-    document.querySelectorAll('.tab-pill').forEach(pill => {
-      pill.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        // Offset scroll for sticky navbar and sticky tabs
-        const navHeight = document.getElementById('navbar').offsetHeight;
-        const tabsHeight = 72; // explicitly 72px per CSS
-        window.scrollTo({
-          top: targetSection.offsetTop - navHeight - tabsHeight + 10,
-          behavior: 'smooth'
-        });
-      });
-    });
-
-    // 3. IntersectionObserver updates active tab based on scroll
-    const menuSections = document.querySelectorAll('.menu-section');
-    const tabPills = document.querySelectorAll('.tab-pill');
-
-    const tabObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const activeId = entry.target.getAttribute('id');
-          tabPills.forEach(pill => {
-            pill.classList.remove('active');
-            if (pill.getAttribute('href') === '#' + activeId) {
-              pill.classList.add('active');
-              pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-          });
-        }
-      });
-    }, {
-      root: null,
-      rootMargin: '-30% 0px -60% 0px',
-      threshold: 0
-    });
-
-    menuSections.forEach(sec => tabObserver.observe(sec));
-
-    // 4. Staggered reveal animation (index * 80ms)
+    // 1. SCROLL REVEAL (opacity + translateY, staggered by index * 70ms)
     const menuItems = document.querySelectorAll('.menu-item');
     let revealBatch = [];
     let revealTimeout = null;
@@ -464,7 +451,7 @@
           revealBatch.forEach((item, index) => {
             setTimeout(() => {
               item.classList.add('visible');
-            }, index * 80);
+            }, index * 70);
           });
           revealBatch = [];
           revealTimeout = null;
@@ -473,6 +460,70 @@
     }, { threshold: 0.1 });
 
     menuItems.forEach(item => revealObserver.observe(item));
+
+    // 2. ACTIVE TAB: IntersectionObserver updates active pill on section scroll (>40%)
+    const menuSections = document.querySelectorAll('.menu-section');
+    const tabPills = document.querySelectorAll('.tab-pill');
+
+    const tabObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.getAttribute('id');
+          tabPills.forEach(pill => {
+            pill.classList.remove('active');
+            if (pill.getAttribute('href') === '#' + activeId) {
+              pill.classList.add('active');
+            }
+          });
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '-20% 0px -40% 0px',
+      threshold: 0.4
+    });
+
+    menuSections.forEach(sec => tabObserver.observe(sec));
+
+    // Smooth scroll for tab pills
+    tabPills.forEach(pill => {
+      pill.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        const navHeight = document.getElementById('navbar').offsetHeight;
+        const tabsHeight = 72;
+        window.scrollTo({
+          top: targetSection.offsetTop - navHeight - tabsHeight + 10,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // 3. NAV SHRINK: scroll past 80px reduces padding via class
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 80) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 4. HERO ENTRANCE: animate heading purely CSS logic triggered by JS for timing
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.hero-title').classList.add('visible');
+      }, 100);
+    });
+
+    // 5. CIRCLE WOBBLE: on page load, apply animation offset by index * 0.4s
+    const circles = document.querySelectorAll('.circle-wrap');
+    circles.forEach((circle, idx) => {
+      circle.style.animationDelay = `${idx * 0.4}s`;
+    });
+
   </script>
 </body>
 </html>
