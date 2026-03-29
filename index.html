@@ -601,63 +601,154 @@
     }
 
     /* ── HOW TO ORDER ── */
-    .how-section {
-      background: var(--white);
+    #order {
+      background: var(--ink);
+      padding: 6rem 48px;
+    }
+
+    .order-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 100px 48px;
-      border-radius: 32px;
     }
 
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 60px;
+    .order-left .section-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--blush);
+      margin-bottom: 1.5rem;
+      display: inline-block;
     }
 
-    .how-step {
-      text-align: center;
-      position: relative;
+    .order-heading {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(2rem, 3vw, 3rem);
+      color: white;
+      margin-bottom: 1rem;
+      line-height: 1.15;
     }
-    .how-step:not(:last-child)::after {
-      content: '···';
-      position: absolute;
-      right: -16px;
-      top: 28px;
-      font-size: 1.2rem;
-      color: var(--rose-light);
-      letter-spacing: 2px;
+    .order-heading em {
+      font-style: italic;
+      color: var(--rose);
     }
 
-    .how-icon {
-      width: 72px; height: 72px;
-      background: var(--blush);
-      border-radius: 50%;
+    .order-subtext {
+      font-family: var(--sans);
+      color: rgba(255,255,255,0.45);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    .order-steps {
       display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .order-step {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
       align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin: 0 auto 20px;
-      transition: background 0.3s, transform 0.3s;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    .how-step:hover .how-icon {
+    .order-step:first-child {
+      padding-top: 0;
+    }
+    .order-step:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .step-number {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--rose);
+      line-height: 1;
+    }
+
+    .step-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .step-title {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: white;
+      letter-spacing: 0.05em;
+    }
+
+    .step-desc {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    .order-form-container {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 3rem;
+    }
+
+    .order-form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+    }
+
+    .order-form-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .order-input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: white;
+      padding: 0.7rem 0;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      transition: border-bottom-color 0.3s ease;
+      outline: none;
+      resize: none;
+    }
+    .order-input:focus {
+      border-bottom-color: var(--rose);
+    }
+
+    .order-submit {
+      width: 100%;
       background: var(--rose);
-      transform: scale(1.1);
+      color: white;
+      font-family: var(--sans);
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      padding: 1.1rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 1rem;
     }
-
-    .how-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: var(--charcoal);
-      margin-bottom: 8px;
-    }
-
-    .how-desc {
-      font-size: 0.83rem;
-      line-height: 1.65;
-      color: var(--charcoal-light);
+    .order-submit:hover {
+      background: var(--deep-rose);
     }
 
     /* ── CTA SECTION ── */
@@ -788,12 +879,10 @@
       .about-stats { grid-template-columns: 1fr; }
       .menu-grid { grid-template-columns: 1fr 1fr; }
       .testi-grid { grid-template-columns: 1fr; }
-      .how-grid { grid-template-columns: 1fr 1fr; }
-      .how-step::after { display: none; }
+      .order-container { grid-template-columns: 1fr; gap: 4rem; }
     }
     @media (max-width: 600px) {
       .menu-grid { grid-template-columns: 1fr; }
-      .how-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1012,38 +1101,61 @@
   </section>
 
   <!-- HOW TO ORDER -->
-  <section id="order" style="padding: 100px 48px; background: var(--cream);">
-    <div class="how-section">
-      <div class="reveal" style="text-align: center;">
-        <p class="section-label" style="justify-content: center;">How to Order</p>
-        <h2 class="section-title">It's as easy as<br><em>pie 🥧</em></h2>
+  <section id="order">
+    <div class="order-container">
+      <div class="order-left reveal">
+        <span class="order-left section-label" style="display:inline-block; font-family:var(--sans); font-size:0.65rem; text-transform:uppercase; letter-spacing:0.22em; color:var(--blush); margin-bottom:1.5rem;">Place an order</span>
+        <h2 class="order-heading">It starts with telling us <em>what you want</em>.</h2>
+        <p class="order-subtext">Fill out the form to request a custom bake, and we'll get back to you with a quote to confirm.</p>
+        
+        <div class="order-steps">
+          <div class="order-step">
+            <span class="step-number">01</span>
+            <div class="step-text">
+              <span class="step-title">Submit Request</span>
+              <span class="step-desc">Fill out the form with your details.</span>
+            </div>
+          </div>
+          <div class="order-step">
+            <span class="step-number">02</span>
+            <div class="step-text">
+              <span class="step-title">Customise It</span>
+              <span class="step-desc">We'll discuss your ideal flavor and design.</span>
+            </div>
+          </div>
+          <div class="order-step">
+            <span class="step-number">03</span>
+            <div class="step-text">
+              <span class="step-title">Confirm & Pay</span>
+              <span class="step-desc">Approve the quote and send 50% advance.</span>
+            </div>
+          </div>
+          <div class="order-step">
+            <span class="step-number">04</span>
+            <div class="step-text">
+              <span class="step-title">Receive the Joy</span>
+              <span class="step-desc">Pick up or get it delivered, ready to delight.</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="how-grid">
-        <div class="how-step reveal" style="transition-delay: 0.05s">
-          <div class="how-icon">📲</div>
-          <h3 class="how-title">DM on Instagram</h3>
-          <p class="how-desc">Slide into our DMs on @2rabbitsbakes with what you'd love to order.</p>
-        </div>
-        <div class="how-step reveal" style="transition-delay: 0.1s">
-          <div class="how-icon">🎨</div>
-          <h3 class="how-title">Customise It</h3>
-          <p class="how-desc">Tell us your flavour, design idea, occasion & any dietary needs. We'll make it yours.</p>
-        </div>
-        <div class="how-step reveal" style="transition-delay: 0.15s">
-          <div class="how-icon">💸</div>
-          <h3 class="how-title">Confirm & Pay</h3>
-          <p class="how-desc">We'll send you a quote. Confirm with 50% advance and your order is locked in with love.</p>
-        </div>
-        <div class="how-step reveal" style="transition-delay: 0.2s">
-          <div class="how-icon">🎀</div>
-          <h3 class="how-title">Receive the Joy</h3>
-          <p class="how-desc">Pick up or get it delivered, beautifully packaged and ready to delight.</p>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 60px;" class="reveal">
-        <a href="https://www.instagram.com" class="btn-primary">Start Your Order</a>
+      <div class="order-form-container reveal" style="transition-delay: 0.15s">
+        <form>
+          <div class="order-form-group">
+            <label class="order-form-label" for="name">Name</label>
+            <input class="order-input" type="text" id="name" name="name" required />
+          </div>
+          <div class="order-form-group">
+            <label class="order-form-label" for="email">Email</label>
+            <input class="order-input" type="email" id="email" name="email" required />
+          </div>
+          <div class="order-form-group">
+            <label class="order-form-label" for="details">Order Details</label>
+            <textarea class="order-input" id="details" name="details" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="order-submit">Submit Order</button>
+        </form>
       </div>
     </div>
   </section>
