@@ -813,51 +813,69 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--charcoal);
-      color: rgba(255,255,255,0.6);
-      padding: 60px 48px 40px;
-      text-align: center;
+      background: var(--parchment);
+      border-top: 1px solid var(--border);
+      padding: 4rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      text-align: left;
     }
 
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: white;
-      margin-bottom: 8px;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
     }
-    .footer-logo em { font-style: italic; color: var(--rose-light); }
+    .footer-logo em {
+      font-style: italic;
+      color: var(--rose);
+      font-weight: 400;
+    }
 
     .footer-tagline {
-      font-size: 0.85rem;
-      font-style: italic;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 40px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 0;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 32px;
+      gap: 2rem;
       list-style: none;
-      margin-bottom: 40px;
+      margin: 0;
+      padding: 0;
       flex-wrap: wrap;
     }
     .footer-links a {
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
+      font-family: var(--sans);
+      font-size: 0.72rem;
       text-transform: uppercase;
-      transition: color 0.3s;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
-    .footer-links a:hover { color: var(--rose-light); }
+    .footer-links a:hover {
+      color: var(--deep-rose);
+    }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 28px;
-      font-size: 0.76rem;
-      color: rgba(255,255,255,0.25);
+    .footer-right p {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: rgba(122,92,88,0.5);
+      margin: 0;
     }
 
     /* ── KEYFRAMES ── */
@@ -880,6 +898,8 @@
       .menu-grid { grid-template-columns: 1fr 1fr; }
       .testi-grid { grid-template-columns: 1fr; }
       .order-container { grid-template-columns: 1fr; gap: 4rem; }
+      footer { flex-direction: column; padding: 4rem 2rem; text-align: center; }
+      .footer-left { align-items: center; text-align: center; }
     }
     @media (max-width: 600px) {
       .menu-grid { grid-template-columns: 1fr; }
@@ -1181,8 +1201,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">2 <em>Rabbits</em> Bakes</div>
-    <p class="footer-tagline">🌸 Pink Café · Freshly Baked · Made with Love ❤️</p>
+    <div class="footer-left">
+      <div class="footer-logo">2 <em>Rabbits</em> Bakes</div>
+      <p class="footer-tagline">Pink Café · Freshly Baked · Made with Love · Koramangala</p>
+    </div>
     <ul class="footer-links">
       <li><a href="#about">Our Story</a></li>
       <li><a href="#menu">Menu</a></li>
@@ -1190,8 +1212,8 @@
       <li><a href="#order">Order</a></li>
       <li><a href="https://www.instagram.com">Instagram</a></li>
     </ul>
-    <div class="footer-bottom">
-      <p>© 2025 2 Rabbits Bakes · Bangalore, India · Made with 🩷</p>
+    <div class="footer-right">
+      <p class="footer-copy">© 2025 2 Rabbits Bakes</p>
     </div>
   </footer>
 
