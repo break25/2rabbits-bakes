@@ -348,71 +348,78 @@
     }
 
     /* ── ABOUT ── */
-    .about {
-      background: var(--white);
+    #about {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 5rem;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      border-radius: 32px;
-    }
-    .about-section { padding: 80px 48px; }
-
-    .about-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .about-blob {
-      width: 380px;
-      height: 380px;
-      background: linear-gradient(135deg, var(--blush) 0%, var(--lavender) 100%);
-      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 8rem;
-      animation: morphBlob 8s ease-in-out infinite;
-      box-shadow: 0 24px 60px var(--shadow);
-    }
-    @keyframes morphBlob {
-      0%, 100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
-      33% { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
-      66% { border-radius: 70% 30% 50% 50% / 40% 70% 30% 60%; }
+      background: var(--parchment);
+      padding: 6rem;
     }
 
-    .about-floating-tag {
-      position: absolute;
-      background: white;
-      border-radius: 20px;
-      padding: 12px 20px;
-      box-shadow: 0 8px 24px var(--shadow);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
-      font-style: italic;
-      color: var(--charcoal);
-      border: 1px solid var(--blush);
-    }
-    .about-floating-tag.tag-1 { top: 20px; right: -10px; }
-    .about-floating-tag.tag-2 { bottom: 30px; left: -10px; }
-
-    .about-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 32px;
-    }
-    .pill {
-      background: var(--blush);
+    .about-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
       color: var(--rose);
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .about-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+    .about-heading em {
+      font-style: italic;
+      color: var(--deep-rose);
+    }
+
+    .about-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+    .about-text:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--deep-rose);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
     }
 
     /* ── MENU ── */
@@ -754,8 +761,8 @@
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
       section { padding: 70px 24px; }
-      .about { grid-template-columns: 1fr; gap: 40px; }
-      .about-visual { display: none; }
+      #about { grid-template-columns: 1fr; gap: 4rem; padding: 4rem 2rem; }
+      .about-stats { grid-template-columns: 1fr; }
       .menu-grid { grid-template-columns: 1fr 1fr; }
       .testi-grid { grid-template-columns: 1fr; }
       .how-grid { grid-template-columns: 1fr 1fr; }
@@ -825,26 +832,33 @@
   </div>
 
   <!-- ABOUT -->
-  <section id="about" style="background: var(--white); padding: 100px 48px;">
-    <div class="about" style="max-width: 1100px; margin: 0 auto;">
-      <div class="reveal">
-        <p class="section-label">Our Story</p>
-        <h2 class="section-title">Two sisters, one <em>sweet dream</em></h2>
-        <p class="section-body">
-          What started as weekend baking sessions between two rabbit-loving sisters has blossomed into a little pink haven of handmade sweetness. Every cake, every tart, every lovingly frosted cookie is made fresh to order — because you deserve something made just for you.
-        </p>
-        <div class="about-pills">
-          <span class="pill">🧁 Freshly Baked</span>
-          <span class="pill">🐰 Family Run</span>
-          <span class="pill">🌸 Made to Order</span>
-          <span class="pill">💌 Gift Wrapping</span>
-          <span class="pill">🌿 Natural Ingredients</span>
-        </div>
+  <section id="about" class="reveal">
+    <div class="about-left">
+      <span class="about-label">Our Story</span>
+      <h2 class="about-heading">Two sisters. One pink <em>dream</em> kitchen.</h2>
+      <p class="about-text">
+        What started as weekend baking sessions between two sisters has blossomed into a haven of handmade sweetness. Every cake, tart, and frosted cookie is crafted with care, bringing our recipes from our home to yours.
+      </p>
+      <p class="about-text">
+        We believe in the magic of small-batch baking. Everything is made fresh to order, ensuring that you receive a dessert that is not only beautiful but truly made just for you.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <span class="stat-number">4.9</span>
+        <span class="stat-label">Average Rating</span>
       </div>
-      <div class="about-visual reveal">
-        <div class="about-blob">🐰</div>
-        <div class="about-floating-tag tag-1">🌸 "Made with Love"</div>
-        <div class="about-floating-tag tag-2">✨ Est. with a soft heart</div>
+      <div class="stat-card">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Orders Delivered</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Made to Order</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">0</span>
+        <span class="stat-label">Frozen Ingredients</span>
       </div>
     </div>
   </section>
