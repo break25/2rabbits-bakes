@@ -428,84 +428,110 @@
       text-align: center;
       padding: 100px 48px;
     }
-    .menu-section .section-label { justify-content: center; }
+    .menu-section .section-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--rose);
+      justify-content: center;
+      display: flex;
+    }
     .menu-section .section-label::before { display: none; }
+    .menu-section .section-title em { color: var(--deep-rose); }
 
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 1.5px;
+      background: var(--border);
       max-width: 1100px;
       margin: 60px auto 0;
+      border: 1.5px solid var(--border);
     }
 
     .menu-card {
-      background: var(--white);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(212, 105, 122, 0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: left;
-      cursor: pointer;
-    }
-    .menu-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 48px rgba(212, 105, 122, 0.18);
-    }
-
-    .menu-card-image {
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
+      background: var(--warm-white);
+      padding: 2.8rem 2.4rem;
       position: relative;
       overflow: hidden;
+      text-align: left;
+      cursor: default;
+      transition: background 0.3s ease;
     }
-    .menu-card-image::after {
+    .menu-card:hover {
+      background: var(--parchment);
+    }
+    .menu-card::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.04));
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--rose);
+      transition: height 0.3s ease;
+    }
+    .menu-card:hover::before {
+      height: 100%;
     }
 
-    .menu-card-body { padding: 24px; }
+    .menu-watermark {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--blush);
+      position: absolute;
+      top: 0.8rem;
+      right: 1.2rem;
+      line-height: 1;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .menu-card-body {
+      position: relative;
+      z-index: 1;
+    }
 
     .menu-card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 400;
-      color: var(--charcoal);
-      margin-bottom: 6px;
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
     }
 
     .menu-card-desc {
-      font-size: 0.84rem;
-      line-height: 1.6;
-      color: var(--charcoal-light);
-      margin-bottom: 16px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.6rem;
     }
 
     .menu-card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
+      z-index: 1;
     }
 
     .menu-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--rose);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--deep-rose);
     }
 
     .menu-tag {
-      background: var(--lavender);
-      color: #7B5EA7;
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--rose);
+      border: 1px solid var(--rose);
+      padding: 0.2rem 0.6rem;
     }
 
     /* ── TESTIMONIALS ── */
@@ -865,16 +891,16 @@
 
   <!-- MENU -->
   <section class="menu-section" id="menu">
-    <p class="section-label reveal">Our Menu</p>
-    <h2 class="section-title reveal">Every bite is a <em>little hug</em></h2>
+    <p class="section-label reveal">What We Make</p>
+    <h2 class="section-title reveal">Every bite is a little <em>decision</em>.</h2>
 
     <div class="menu-grid">
       <!-- Card 1 -->
       <div class="menu-card reveal" style="transition-delay: 0.05s">
-        <div class="menu-card-image" style="background: linear-gradient(135deg, #FADADD 0%, #F2C4C8 100%);">🎂</div>
+        <span class="menu-watermark">01</span>
         <div class="menu-card-body">
           <h3 class="menu-card-title">Custom Layer Cakes</h3>
-          <p class="menu-card-desc">Tall, dreamy cakes dressed in pastel buttercream. Choose your flavour, your occasion, your love.</p>
+          <p class="menu-card-desc">Three tiers of serious sponge cake and buttercream. Tell us the flavor, and we’ll make sure it looks better than the reference photo you found on Pinterest.</p>
           <div class="menu-card-footer">
             <span class="menu-price">From ₹899</span>
             <span class="menu-tag">Bestseller</span>
@@ -884,10 +910,10 @@
 
       <!-- Card 2 -->
       <div class="menu-card reveal" style="transition-delay: 0.1s">
-        <div class="menu-card-image" style="background: linear-gradient(135deg, #E8D5F5 0%, #D4C4F0 100%);">🧁</div>
+        <span class="menu-watermark">02</span>
         <div class="menu-card-body">
           <h3 class="menu-card-title">Cupcake Bouquets</h3>
-          <p class="menu-card-desc">A dozen little joys, swirled high with cloud-soft frosting. Perfect for gifting or treating yourself.</p>
+          <p class="menu-card-desc">Twelve cupcakes disguised as flowers. It's the only acceptable bouquet you can actually eat without people staring.</p>
           <div class="menu-card-footer">
             <span class="menu-price">From ₹449</span>
             <span class="menu-tag">Gift Fave</span>
@@ -897,10 +923,10 @@
 
       <!-- Card 3 -->
       <div class="menu-card reveal" style="transition-delay: 0.15s">
-        <div class="menu-card-image" style="background: linear-gradient(135deg, #FFF5F0 0%, #FADADD 100%);">🍪</div>
+        <span class="menu-watermark">03</span>
         <div class="menu-card-body">
           <h3 class="menu-card-title">Decorated Cookies</h3>
-          <p class="menu-card-desc">Royal iced shortbreads shaped like bunnies, hearts, and flowers. Each one is a little work of art.</p>
+          <p class="menu-card-desc">Meticulously iced shortbread that took longer to decorate than it will take you to eat. Yes, the icing tastes good.</p>
           <div class="menu-card-footer">
             <span class="menu-price">From ₹249</span>
             <span class="menu-tag">So Cute</span>
@@ -910,10 +936,10 @@
 
       <!-- Card 4 -->
       <div class="menu-card reveal" style="transition-delay: 0.2s">
-        <div class="menu-card-image" style="background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%);">🍰</div>
+        <span class="menu-watermark">04</span>
         <div class="menu-card-body">
           <h3 class="menu-card-title">Cheesecakes</h3>
-          <p class="menu-card-desc">Silky, cloud-light cheesecakes with berry compotes or caramel drizzles. No-bake or baked, your call.</p>
+          <p class="menu-card-desc">Dense, baked New York style or whipped mascarpone. We don't skimp on the graham cracker crust because we aren't monsters.</p>
           <div class="menu-card-footer">
             <span class="menu-price">From ₹649</span>
             <span class="menu-tag">Seasonal</span>
@@ -923,10 +949,10 @@
 
       <!-- Card 5 -->
       <div class="menu-card reveal" style="transition-delay: 0.25s">
-        <div class="menu-card-image" style="background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);">🥐</div>
+        <span class="menu-watermark">05</span>
         <div class="menu-card-body">
           <h3 class="menu-card-title">Croissant Box</h3>
-          <p class="menu-card-desc">Buttery, flaky, golden layers. Stuffed with jam, almond cream, or chocolate. Weekend mornings sorted.</p>
+          <p class="menu-card-desc">Flaky, butter-laminated pastry layers that will absolutely cover your shirt in crumbs. Worth the dry cleaning bill.</p>
           <div class="menu-card-footer">
             <span class="menu-price">From ₹349</span>
             <span class="menu-tag">Weekend Only</span>
@@ -936,10 +962,10 @@
 
       <!-- Card 6 -->
       <div class="menu-card reveal" style="transition-delay: 0.3s">
-        <div class="menu-card-image" style="background: linear-gradient(135deg, #FFE0B2 0%, #FFCCBC 100%);">🎁</div>
+        <span class="menu-watermark">06</span>
         <div class="menu-card-body">
           <h3 class="menu-card-title">Hamper Boxes</h3>
-          <p class="menu-card-desc">A curated box of our most-loved treats, wrapped in ribbons and packed with so much love.</p>
+          <p class="menu-card-desc">Various baked goods arranged aesthetically in a box. An excellent bribe or last-minute apology gift.</p>
           <div class="menu-card-footer">
             <span class="menu-price">From ₹799</span>
             <span class="menu-tag">Gifting</span>
