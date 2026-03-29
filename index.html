@@ -4,19 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2 Rabbits Bakes 🐰</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --blush: #FADADD;
-      --blush-deep: #F2C4C8;
-      --rose: #D4697A;
-      --rose-light: #E8A0A0;
-      --cream: #FFF5F0;
-      --lavender: #E8D5F5;
-      --charcoal: #3D2C2C;
-      --charcoal-light: #6B4F4F;
-      --white: #FFFFFF;
-      --shadow: rgba(212, 105, 122, 0.15);
+      --blush: #F2D9D9;
+      --rose: #C9847A;
+      --deep-rose: #A85C55;
+      --cream: #FBF6F0;
+      --warm-white: #FFFCF9;
+      --parchment: #F5EDE3;
+      --ink: #2B1A18;
+      --muted: #7A5C58;
+      --border: #E8D0CC;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,9 +25,10 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Lato', sans-serif;
-      background-color: var(--cream);
-      color: var(--charcoal);
+      background: var(--warm-white);
+      font-family: var(--sans);
+      font-weight: 300;
+      color: var(--ink);
       overflow-x: hidden;
     }
 
@@ -57,23 +59,25 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 48px;
-      background: rgba(255, 245, 240, 0.85);
+      padding: 1.4rem 4rem;
+      background: rgba(251, 246, 240, 0.88);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(232, 160, 160, 0.2);
+      border-bottom: 1px solid var(--border);
       transition: box-shadow 0.3s;
     }
     nav.scrolled { box-shadow: 0 4px 24px var(--shadow); }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
+      font-family: var(--serif);
+      font-size: 1.2rem;
       font-weight: 400;
-      color: var(--rose);
-      letter-spacing: 0.02em;
+      color: var(--ink);
       text-decoration: none;
     }
-    .nav-logo span { font-style: italic; }
+    .nav-logo em {
+      font-style: italic;
+      color: var(--rose);
+    }
 
     .nav-links {
       display: flex;
@@ -81,37 +85,30 @@
       list-style: none;
     }
     .nav-links a {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.82rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
       font-weight: 400;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--charcoal-light);
+      color: var(--muted);
       text-decoration: none;
-      position: relative;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 1px;
-      background: var(--rose);
-      transition: width 0.3s;
-    }
-    .nav-links a:hover { color: var(--rose); }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--deep-rose); }
 
     .nav-cta {
-      background: var(--rose);
+      background: var(--deep-rose);
       color: white !important;
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-weight: 700 !important;
-      transition: background 0.3s, transform 0.2s !important;
+      padding: 0.65rem 1.6rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 400 !important;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 0;
+      transition: background 0.3s ease, transform 0.3s ease !important;
     }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: var(--charcoal) !important; transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--rose) !important; transform: translateY(-1px); }
 
     /* ── HERO ── */
     .hero {
@@ -774,7 +771,7 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">2 <span>Rabbits</span> Bakes</a>
+    <a href="#" class="nav-logo">2 <em>Rabbits</em> Bakes</a>
     <ul class="nav-links">
       <li><a href="#about">Our Story</a></li>
       <li><a href="#menu">Menu</a></li>
