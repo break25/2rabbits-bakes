@@ -738,108 +738,99 @@
 
     /* ── TESTIMONIALS ── */
     .testimonials {
-      background: #fdf6f0;
-      padding: 6rem;
+      background: #fdf8f4;
+      padding: 100px 24px;
       text-align: center;
     }
     .testimonials .section-label { justify-content: center; }
     .testimonials .section-label::before { display: none; }
     .testimonials .section-title em { color: var(--deep-rose); }
 
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-      max-width: 1100px;
-      margin: 60px auto 0;
-    }
-
-    .testi-card {
-      background: #fff0f3;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(180,80,100,0.08);
-      text-align: left;
+    .testi-carousel {
       position: relative;
-      overflow: visible;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 60px;
+      min-height: 400px;
     }
 
-    .testi-card:nth-child(1) { transform: rotate(-1.5deg); }
-    .testi-card:nth-child(2) { transform: rotate(1deg); }
-    .testi-card:nth-child(3) { transform: rotate(-0.8deg); }
-
-    .testi-card:hover {
-      transform: rotate(0deg) translateY(-4px);
-      box-shadow: 0 12px 32px rgba(180,80,100,0.12);
-    }
-
-    .testi-watermark {
+    .testi-slide {
       position: absolute;
-      top: 24px;
-      left: 24px;
-      font-family: var(--serif);
-      font-size: 72px;
-      color: #f5c2ce;
-      opacity: 0.5;
-      line-height: 1;
-      pointer-events: none;
-      z-index: 0;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s;
     }
-
-    .testi-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
+    .testi-slide.active {
+      opacity: 1;
+      visibility: visible;
       position: relative;
-      z-index: 1;
-    }
-
-    .testi-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #c0415a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-size: 20px;
-      color: white;
-      flex-shrink: 0;
-    }
-
-    .testi-avatar-info {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .testi-name {
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #c0415a;
-      letter-spacing: 0.05em;
+      top: 0;
     }
 
     .testi-stars {
       color: #e8b84b;
-      font-size: 16px;
-      letter-spacing: 0.1em;
+      font-size: 20px;
+      letter-spacing: 4px;
+      margin-bottom: 24px;
     }
 
-    .testi-quote {
-      font-family: var(--sans);
-      font-size: 15px;
+    .testi-giant-quote {
+      display: block;
+      text-align: center;
+      font-family: 'Playfair Display', var(--serif);
+      font-size: 120px;
+      color: #f5c2ce;
+      opacity: 0.6;
+      line-height: 0;
+      margin-bottom: -30px;
+    }
+
+    .testi-content {
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.8;
       color: #3a2a2a;
-      line-height: 1.7;
-      margin-top: 12px;
-      position: relative;
-      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .testi-divider {
+      width: 60px;
+      height: 2px;
+      background: #e8b4c0;
+      margin: 20px auto;
+    }
+
+    .testi-author {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c0415a;
+      margin-bottom: 30px;
+    }
+
+    .testi-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .testi-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: transparent;
+      border: 2px solid #c0415a;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s ease;
+    }
+    .testi-dot.active {
+      background: #c0415a;
     }
 
     /* ── HOW TO ORDER ── */
@@ -1316,41 +1307,35 @@
     <p class="section-label reveal">Reviews</p>
     <h2 class="section-title reveal">Our sweethearts leave <em>honest notes</em>.</h2>
 
-    <div class="testi-grid">
-      <div class="testi-card reveal" style="transition-delay: 0.05s">
-        <span class="testi-watermark">“</span>
-        <div class="testi-header">
-          <div class="testi-avatar">P</div>
-          <div class="testi-avatar-info">
-            <span class="testi-name">Priya M. · Bangalore</span>
-            <div class="testi-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="testi-quote">The birthday cake was absolutely stunning. My daughter loved it, and for once, the cake tasted just as good as it looked on the table.</p>
+    <div class="testi-carousel reveal">
+      <div class="testi-slide active">
+        <div class="testi-stars">★★★★★</div>
+        <span class="testi-giant-quote">“</span>
+        <p class="testi-content">The birthday cake was absolutely stunning. My daughter loved it, and for once, the cake tasted just as good as it looked on the table.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-author">PRIYA M. · BANGALORE</div>
+      </div>
+      
+      <div class="testi-slide">
+        <div class="testi-stars">★★★★★</div>
+        <span class="testi-giant-quote">“</span>
+        <p class="testi-content">The bunny cookie set was beautifully detailed. The packaging was so careful and pretty that I honestly hesitated to open it.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-author">RIYA K. · BANGALORE</div>
       </div>
 
-      <div class="testi-card reveal" style="transition-delay: 0.1s">
-        <span class="testi-watermark">“</span>
-        <div class="testi-header">
-          <div class="testi-avatar">R</div>
-          <div class="testi-avatar-info">
-            <span class="testi-name">Riya K. · Bangalore</span>
-            <div class="testi-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="testi-quote">The bunny cookie set was beautifully detailed. The packaging was so careful and pretty that I honestly hesitated to open it.</p>
+      <div class="testi-slide">
+        <div class="testi-stars">★★★★★</div>
+        <span class="testi-giant-quote">“</span>
+        <p class="testi-content">This was my third order, and the attention to detail is always consistent. You can tell they actually care about what goes into the oven.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-author">ANANYA S. · BANGALORE</div>
       </div>
 
-      <div class="testi-card reveal" style="transition-delay: 0.15s">
-        <span class="testi-watermark">“</span>
-        <div class="testi-header">
-          <div class="testi-avatar">A</div>
-          <div class="testi-avatar-info">
-            <span class="testi-name">Ananya S. · Bangalore</span>
-            <div class="testi-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="testi-quote">This was my third order, and the attention to detail is always consistent. You can tell they actually care about what goes into the oven.</p>
+      <div class="testi-dots">
+        <button class="testi-dot active" aria-label="Review 1"></button>
+        <button class="testi-dot" aria-label="Review 2"></button>
+        <button class="testi-dot" aria-label="Review 3"></button>
       </div>
     </div>
   </section>
@@ -1488,6 +1473,19 @@
       });
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
+
+    // Testimonial Carousel
+    const testiSlides = document.querySelectorAll('.testi-slide');
+    const testiDots = document.querySelectorAll('.testi-dot');
+    
+    testiDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        testiSlides.forEach(s => s.classList.remove('active'));
+        testiDots.forEach(d => d.classList.remove('active'));
+        testiSlides[index].classList.add('active');
+        testiDots[index].classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
