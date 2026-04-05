@@ -423,49 +423,61 @@
 .fp2 { top: 45%; left: -12%; animation: pillFloat 8s ease-in-out 1s infinite; }
 .fp3 { bottom: 12%; right: -6%; animation: pillFloat 7s ease-in-out 0.5s infinite; }
 
-/* DUAL SCROLL STRIPS */
-.dual-strips {
+/* MASONRY GALLERY GRID */
+.gallery-grid {
   background: var(--shop-dark);
-  padding: 1rem 0;
+  padding: 3rem 4rem;
+}
+
+.masonry {
+  columns: 3;
+  column-gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: 10px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  position: relative;
+  cursor: pointer;
 }
 
-.strip { overflow: hidden; }
-
-.strip-track {
-  display: flex;
-  gap: 0.6rem;
-  width: max-content;
-}
-
-.strip-left .strip-track  { animation: scrollLeft  28s linear infinite; }
-.strip-right .strip-track { animation: scrollRight 22s linear infinite; }
-
-.dual-strips:hover .strip-track { animation-play-state: paused; }
-
-.strip-item {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 2px solid rgba(242,167,184,0.25);
-  transition: border-color 0.3s, transform 0.3s;
-}
-
-.strip-item:hover {
-  border-color: var(--shop-pink);
-  transform: scale(1.1);
-}
-
-.strip-item img {
+.masonry-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.masonry-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(30,10,16,0.35) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.06);
+}
+
+.masonry-item:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .masonry { columns: 2; }
+  .gallery-grid { padding: 2rem 2rem; }
+}
+@media (max-width: 600px) {
+  .masonry { columns: 1; }
+  .gallery-grid { padding: 1.5rem 1rem; }
 }
 
 /* ── KEYFRAMES ── */
@@ -489,16 +501,6 @@
 @keyframes pillFloat {
   0%,100% { transform: translateY(0px); }
   50%     { transform: translateY(-10px); }
-}
-
-@keyframes scrollLeft {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@keyframes scrollRight {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
 }
 
 /* RESPONSIVE */
@@ -736,7 +738,7 @@
 
     /* ── TESTIMONIALS ── */
     .testimonials {
-      background: var(--blush);
+      background: #fdf6f0;
       padding: 6rem;
       text-align: center;
     }
@@ -747,57 +749,97 @@
     .testi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 2.5rem;
       max-width: 1100px;
       margin: 60px auto 0;
     }
 
     .testi-card {
-      background: var(--warm-white);
-      padding: 2.4rem;
+      background: #fff0f3;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(180,80,100,0.08);
       text-align: left;
-      transition: transform 0.3s ease;
+      position: relative;
+      overflow: visible;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
-    .testi-card:hover { transform: translateY(-4px); }
 
-    .testi-quote-mark {
+    .testi-card:nth-child(1) { transform: rotate(-1.5deg); }
+    .testi-card:nth-child(2) { transform: rotate(1deg); }
+    .testi-card:nth-child(3) { transform: rotate(-0.8deg); }
+
+    .testi-card:hover {
+      transform: rotate(0deg) translateY(-4px);
+      box-shadow: 0 12px 32px rgba(180,80,100,0.12);
+    }
+
+    .testi-watermark {
+      position: absolute;
+      top: 24px;
+      left: 24px;
       font-family: var(--serif);
-      font-size: 4rem;
-      color: var(--border);
-      line-height: 0.5;
-      margin-bottom: 1rem;
-      display: block;
+      font-size: 72px;
+      color: #f5c2ce;
+      opacity: 0.5;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .testi-stars {
-      color: var(--rose);
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      margin-bottom: 1rem;
-    }
-
-    .testi-quote {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--ink);
-      line-height: 1.75;
-      margin-bottom: 1.6rem;
-    }
-
-    .testi-author {
+    .testi-header {
       display: flex;
       align-items: center;
       gap: 12px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testi-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #c0415a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 20px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .testi-avatar-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .testi-name {
       font-family: var(--sans);
-      font-size: 0.72rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      text-transform: uppercase;
+      color: #c0415a;
+      letter-spacing: 0.05em;
+    }
+
+    .testi-stars {
+      color: #e8b84b;
+      font-size: 16px;
       letter-spacing: 0.1em;
-      color: var(--muted);
+    }
+
+    .testi-quote {
+      font-family: var(--sans);
+      font-size: 15px;
+      color: #3a2a2a;
+      line-height: 1.7;
+      margin-top: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     /* ── HOW TO ORDER ── */
@@ -1115,8 +1157,6 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="story.html">Our Story</a></li>
-      <li><a href="#order">Find Us</a></li>
-      <li><a href="https://wa.me/918884449239" class="nav-cta" target="_blank">Order via WhatsApp</a></li>
     </ul>
   </nav>
 
@@ -1265,78 +1305,10 @@
     </div>
   </div>
 
-  <!-- DUAL SCROLL STRIPS — replaces marquee -->
-  <div class="dual-strips">
-    <div class="strip strip-left">
-      <div class="strip-track">
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-6UesXqvPMnQ?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-AigxB1zfRVo?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-QX814A1w3j4?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-PFzy4N0_R3M?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-qxQKvTOia6Y?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <!-- duplicate for seamless loop -->
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-6UesXqvPMnQ?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-AigxB1zfRVo?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-QX814A1w3j4?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-PFzy4N0_R3M?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-qxQKvTOia6Y?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-      </div>
-    </div>
-    <div class="strip strip-right">
-      <div class="strip-track">
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-GPc38wLQVfM?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-FDYbS43jUrU?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-WXAbi41N2Js?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo--qQlfYB7pqM?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-Faf15oObeuE?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-75owQGJNi3A?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-HQMZ3aICKkE?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <!-- duplicate -->
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-GPc38wLQVfM?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-FDYbS43jUrU?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-WXAbi41N2Js?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo--qQlfYB7pqM?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-Faf15oObeuE?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-75owQGJNi3A?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-        <div class="strip-item"><img src="https://images.unsplash.com/photo-HQMZ3aICKkE?w=200&h=200&fit=crop&crop=center" alt=""/></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <section id="about" class="reveal">
-    <div class="about-left">
-      <span class="about-label">Our Story</span>
-      <h2 class="about-heading">Two sisters. One pink <em>dream</em> kitchen.</h2>
-      <p class="about-text">
-        What started as weekend baking sessions between two sisters has blossomed into a haven of handmade sweetness. Every cake, tart, and frosted cookie is crafted with care, bringing our recipes from our home to yours.
-      </p>
-      <p class="about-text">
-        We believe in the magic of small-batch baking. Everything is made fresh to order, ensuring that you receive a dessert that is not only beautiful but truly made just for you.
-      </p>
-    </div>
-    <div class="about-stats">
-      <div class="stat-card">
-        <span class="stat-number">4.9</span>
-        <span class="stat-label">Average Rating</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">500+</span>
-        <span class="stat-label">Orders Delivered</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Made to Order</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">0</span>
-        <span class="stat-label">Frozen Ingredients</span>
-      </div>
-    </div>
+  <!-- MOOD PHOTO -->
+  <section style="position: relative; width: 100%; height: 520px; margin: 0; padding: 0; overflow: hidden;">
+    <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=1400&fit=crop&crop=center" style="width: 100%; height: 100%; object-fit: cover; display: block; margin: 0; border-radius: 0;" alt="" />
+    <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.15); pointer-events: none;"></div>
   </section>
 
   <!-- TESTIMONIALS -->
@@ -1346,30 +1318,39 @@
 
     <div class="testi-grid">
       <div class="testi-card reveal" style="transition-delay: 0.05s">
-        <span class="testi-quote-mark">“</span>
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">The birthday cake was absolutely stunning. My daughter loved it, and for once, the cake tasted just as good as it looked on the table.</p>
-        <div class="testi-author">
-          <div class="testi-name">Priya M. · Bangalore</div>
+        <span class="testi-watermark">“</span>
+        <div class="testi-header">
+          <div class="testi-avatar">P</div>
+          <div class="testi-avatar-info">
+            <span class="testi-name">Priya M. · Bangalore</span>
+            <div class="testi-stars">★★★★★</div>
+          </div>
         </div>
+        <p class="testi-quote">The birthday cake was absolutely stunning. My daughter loved it, and for once, the cake tasted just as good as it looked on the table.</p>
       </div>
 
       <div class="testi-card reveal" style="transition-delay: 0.1s">
-        <span class="testi-quote-mark">“</span>
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">The bunny cookie set was beautifully detailed. The packaging was so careful and pretty that I honestly hesitated to open it.</p>
-        <div class="testi-author">
-          <div class="testi-name">Riya K. · Bangalore</div>
+        <span class="testi-watermark">“</span>
+        <div class="testi-header">
+          <div class="testi-avatar">R</div>
+          <div class="testi-avatar-info">
+            <span class="testi-name">Riya K. · Bangalore</span>
+            <div class="testi-stars">★★★★★</div>
+          </div>
         </div>
+        <p class="testi-quote">The bunny cookie set was beautifully detailed. The packaging was so careful and pretty that I honestly hesitated to open it.</p>
       </div>
 
       <div class="testi-card reveal" style="transition-delay: 0.15s">
-        <span class="testi-quote-mark">“</span>
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">This was my third order, and the attention to detail is always consistent. You can tell they actually care about what goes into the oven.</p>
-        <div class="testi-author">
-          <div class="testi-name">Ananya S. · Bangalore</div>
+        <span class="testi-watermark">“</span>
+        <div class="testi-header">
+          <div class="testi-avatar">A</div>
+          <div class="testi-avatar-info">
+            <span class="testi-name">Ananya S. · Bangalore</span>
+            <div class="testi-stars">★★★★★</div>
+          </div>
         </div>
+        <p class="testi-quote">This was my third order, and the attention to detail is always consistent. You can tell they actually care about what goes into the oven.</p>
       </div>
     </div>
   </section>
