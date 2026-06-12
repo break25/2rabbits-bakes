@@ -261,19 +261,19 @@
 .cta-main {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-weight: 300;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: var(--shop-berry);
+  background: var(--shop-rose);
   color: var(--shop-ivory);
   padding: 1rem 2.2rem;
+  border-radius: 50px;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 .cta-main:hover {
-  background: var(--shop-rose);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(139,58,82,0.25);
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(242, 167, 184, 0.6);
 }
 
 .cta-sub {
@@ -283,12 +283,29 @@
   letter-spacing: 0.08em;
   color: var(--shop-muted);
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: color 0.25s, gap 0.25s;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
 }
-.cta-sub:hover { color: var(--shop-berry); gap: 0.7rem; }
+.cta-sub::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--shop-berry);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+.cta-sub:hover {
+  color: var(--shop-berry);
+}
+.cta-sub:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
 
 /* BADGES */
 .hero-badges {
@@ -301,18 +318,29 @@
 
 .badge {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--shop-berry);
-  border: 1px solid rgba(139,58,82,0.25);
+  color: var(--shop-rose);
+  border: none;
   padding: 0.35rem 0.9rem;
   border-radius: 999px;
-  background: rgba(242,167,184,0.12);
-  transition: background 0.2s;
+  background: #fce8ef;
+  display: inline-block;
+  animation: badgeFloat 3s ease-in-out infinite;
 }
-.badge:hover { background: rgba(242,167,184,0.28); }
+.badge:hover {
+  background: #fad5df;
+}
+.badge:nth-child(1) { animation-delay: 0s; }
+.badge:nth-child(2) { animation-delay: 0.4s; }
+.badge:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
 
 /* RIGHT COLUMN — tilt card */
 .hero-visual-col {
@@ -1194,10 +1222,7 @@
 
         <div class="hero-ctas">
           <a href="menu.html" class="cta-main">Explore Menu</a>
-          <a href="https://wa.me/918884449239" class="cta-sub" target="_blank">
-            Order on WhatsApp
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </a>
+          <a href="https://wa.me/918884449239" class="cta-sub" target="_blank">Order on WhatsApp</a>
         </div>
 
         <div class="hero-badges">
