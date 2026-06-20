@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2 Rabbits Bakes 🐰</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  
+  <!-- GSAP Core + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>gsap.registerPlugin(ScrollTrigger);</script>
   <style>
     :root {
   --shop-pink:  #F2A7B8;
@@ -1177,8 +1182,37 @@
     @media (max-width: 600px) {
       .menu-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── MARQUEE STRIP ── */
+    .marquee-strip {
+      background: #8b3252;  /* deep rose */
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      margin: 0;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 32px;
+      animation: marqueeScroll 28s linear infinite;
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      color: #fdf8f4;  /* warm cream */
+      text-transform: uppercase;
+    }
+    .marquee-track .dot { color: #fce8ef; opacity: 0.6; }
+    .marquee-track:hover { animation-play-state: paused; }  /* pauses on hover */
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
   </style>
-  <link rel="stylesheet" href="cursor.css" />
 </head>
 <body>
 
@@ -1224,9 +1258,7 @@
         </p>
 
         <h1 class="hero-title" id="heroTitle">
-          <span class="word-row"><span class="word-wrap"><span class="word">Baked</span></span><span class="word-wrap"><span class="word"> fresh,</span></span></span>
-          <span class="word-row"><span class="word-wrap"><span class="word pink-word">with love,</span></span></span>
-          <span class="word-row"><span class="word-wrap"><span class="word">for you.</span></span></span>
+          Baked fresh, <span class="pink-word">with love,</span> for you.
         </h1>
 
         <p class="hero-body">
@@ -1252,82 +1284,84 @@
 
       <!-- RIGHT: tilt card with clip reveal -->
       <div class="hero-visual-col">
-        <div class="rabbit-stage" id="tiltCard">
-          <div class="rabbit-glow"></div>
-          <svg class="rabbit-svg" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" fill="none">
-            
-            <!-- left ear -->
-            <ellipse class="ear ear-left" cx="110" cy="110" rx="28" ry="70"
-              stroke="#8B3A52" stroke-width="2.5"
-              transform="rotate(-12 110 110)"/>
-            <ellipse cx="110" cy="115" rx="14" ry="52"
-              fill="#F9D0DA" opacity="0.6"
-              transform="rotate(-12 110 115)"/>
+        <div class="rabbit-stage-wrap" id="bunnyRepelWrapper" style="width: 100%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d;">
+          <div class="rabbit-stage" id="tiltCard">
+            <div class="rabbit-glow"></div>
+            <svg class="rabbit-svg" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+              
+              <!-- left ear -->
+              <ellipse class="ear ear-left" cx="110" cy="110" rx="28" ry="70"
+                stroke="#8B3A52" stroke-width="2.5"
+                transform="rotate(-12 110 110)"/>
+              <ellipse cx="110" cy="115" rx="14" ry="52"
+                fill="#F9D0DA" opacity="0.6"
+                transform="rotate(-12 110 115)"/>
 
-            <!-- right ear -->
-            <ellipse class="ear ear-right" cx="210" cy="105" rx="28" ry="70"
-              stroke="#8B3A52" stroke-width="2.5"
-              transform="rotate(12 210 105)"/>
-            <ellipse cx="210" cy="110" rx="14" ry="52"
-              fill="#F9D0DA" opacity="0.6"
-              transform="rotate(12 210 110)"/>
+              <!-- right ear -->
+              <ellipse class="ear ear-right" cx="210" cy="105" rx="28" ry="70"
+                stroke="#8B3A52" stroke-width="2.5"
+                transform="rotate(12 210 105)"/>
+              <ellipse cx="210" cy="110" rx="14" ry="52"
+                fill="#F9D0DA" opacity="0.6"
+                transform="rotate(12 210 110)"/>
 
-            <!-- body -->
-            <ellipse cx="160" cy="290" rx="85" ry="95"
-              fill="#FDF0F4" stroke="#8B3A52" stroke-width="2.5"/>
+              <!-- body -->
+              <ellipse cx="160" cy="290" rx="85" ry="95"
+                fill="#FDF0F4" stroke="#8B3A52" stroke-width="2.5"/>
 
-            <!-- head -->
-            <circle cx="160" cy="185" r="75"
-              fill="#FDF0F4" stroke="#8B3A52" stroke-width="2.5"/>
+              <!-- head -->
+              <circle cx="160" cy="185" r="75"
+                fill="#FDF0F4" stroke="#8B3A52" stroke-width="2.5"/>
 
-            <!-- cheek blush left -->
-            <ellipse cx="125" cy="200" rx="18" ry="10" fill="#F2A7B8" opacity="0.5"/>
-            <!-- cheek blush right -->
-            <ellipse cx="195" cy="200" rx="18" ry="10" fill="#F2A7B8" opacity="0.5"/>
+              <!-- cheek blush left -->
+              <ellipse cx="125" cy="200" rx="18" ry="10" fill="#F2A7B8" opacity="0.5"/>
+              <!-- cheek blush right -->
+              <ellipse cx="195" cy="200" rx="18" ry="10" fill="#F2A7B8" opacity="0.5"/>
 
-            <!-- eyes -->
-            <circle class="eye" cx="140" cy="178" r="6" fill="#8B3A52"/>
-            <circle cx="142" cy="176" r="2" fill="white"/>
-            <circle class="eye" cx="180" cy="178" r="6" fill="#8B3A52"/>
-            <circle cx="182" cy="176" r="2" fill="white"/>
+              <!-- eyes -->
+              <circle class="eye" cx="140" cy="178" r="6" fill="#8B3A52"/>
+              <circle cx="142" cy="176" r="2" fill="white"/>
+              <circle class="eye" cx="180" cy="178" r="6" fill="#8B3A52"/>
+              <circle cx="182" cy="176" r="2" fill="white"/>
 
-            <!-- nose -->
-            <ellipse cx="160" cy="196" rx="5" ry="3.5" fill="#C4687A"/>
+              <!-- nose -->
+              <ellipse cx="160" cy="196" rx="5" ry="3.5" fill="#C4687A"/>
 
-            <!-- mouth -->
-            <path d="M150 202 Q160 212 170 202"
-              stroke="#8B3A52" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- mouth -->
+              <path d="M150 202 Q160 212 170 202"
+                stroke="#8B3A52" stroke-width="1.8" stroke-linecap="round"/>
 
-            <!-- tummy circle -->
-            <ellipse cx="160" cy="295" rx="48" ry="55"
-              fill="#F9D0DA" opacity="0.5" stroke="#C4687A"
-              stroke-width="1.2" stroke-dasharray="4 4"/>
+              <!-- tummy circle -->
+              <ellipse cx="160" cy="295" rx="48" ry="55"
+                fill="#F9D0DA" opacity="0.5" stroke="#C4687A"
+                stroke-width="1.2" stroke-dasharray="4 4"/>
 
-            <!-- little cake held by rabbit -->
-            <rect x="135" y="310" width="50" height="32"
-              rx="3" fill="#F2A7B8" stroke="#8B3A52" stroke-width="1.8"/>
-            <rect x="130" y="306" width="60" height="10"
-              rx="2" fill="#C4687A" stroke="#8B3A52" stroke-width="1.5"/>
-            <!-- candle -->
-            <rect x="157" y="292" width="6" height="16"
-              rx="2" fill="#FDF6F0" stroke="#8B3A52" stroke-width="1.2"/>
-            <!-- flame -->
-            <ellipse class="flame" cx="160" cy="290" rx="4" ry="6" fill="#F2A7B8" opacity="0.9"/>
+              <!-- little cake held by rabbit -->
+              <rect x="135" y="310" width="50" height="32"
+                rx="3" fill="#F2A7B8" stroke="#8B3A52" stroke-width="1.8"/>
+              <rect x="130" y="306" width="60" height="10"
+                rx="2" fill="#C4687A" stroke="#8B3A52" stroke-width="1.5"/>
+              <!-- candle -->
+              <rect x="157" y="292" width="6" height="16"
+                rx="2" fill="#FDF6F0" stroke="#8B3A52" stroke-width="1.2"/>
+              <!-- flame -->
+              <ellipse class="flame" cx="160" cy="290" rx="4" ry="6" fill="#F2A7B8" opacity="0.9"/>
 
-            <!-- left arm -->
-            <path d="M82 265 Q60 280 75 310"
-              stroke="#8B3A52" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- right arm -->
-            <path d="M238 265 Q260 280 245 310"
-              stroke="#8B3A52" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- left arm -->
+              <path d="M82 265 Q60 280 75 310"
+                stroke="#8B3A52" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- right arm -->
+              <path d="M238 265 Q260 280 245 310"
+                stroke="#8B3A52" stroke-width="2.5" stroke-linecap="round"/>
 
-            <!-- tiny stars around rabbit -->
-            <text class="star s1" x="48"  y="155" font-size="14" fill="#C4687A" opacity="0.7">✦</text>
-            <text class="star s2" x="258" y="140" font-size="10" fill="#F2A7B8" opacity="0.8">✦</text>
-            <text class="star s3" x="70"  y="320" font-size="8"  fill="#8B3A52" opacity="0.5">✦</text>
-            <text class="star s4" x="260" y="310" font-size="12" fill="#C4687A" opacity="0.6">✦</text>
+              <!-- tiny stars around rabbit -->
+              <text class="star s1" x="48"  y="155" font-size="14" fill="#C4687A" opacity="0.7">✦</text>
+              <text class="star s2" x="258" y="140" font-size="10" fill="#F2A7B8" opacity="0.8">✦</text>
+              <text class="star s3" x="70"  y="320" font-size="8"  fill="#8B3A52" opacity="0.5">✦</text>
+              <text class="star s4" x="260" y="310" font-size="12" fill="#C4687A" opacity="0.6">✦</text>
 
-          </svg>
+            </svg>
+          </div>
         </div>
 
         <!-- floating pill badges around the card -->
@@ -1343,6 +1377,36 @@
   <section style="position: relative; width: 100%; height: 520px; margin: 0; padding: 0; overflow: hidden;">
     <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=1400&fit=crop&crop=center" style="width: 100%; height: 100%; object-fit: cover; display: block; margin: 0; border-radius: 0;" alt="" />
     <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.15); pointer-events: none;"></div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <section class="marquee-strip">
+    <div class="marquee-track">
+      <span>Made with love</span>
+      <span class="dot">·</span>
+      <span>Baked fresh</span>
+      <span class="dot">·</span>
+      <span>Always custom</span>
+      <span class="dot">·</span>
+      <span>Koramangala's favourite</span>
+      <span class="dot">·</span>
+      <span>Made with love</span>
+      <span class="dot">·</span>
+      <span>Baked fresh</span>
+      <span class="dot">·</span>
+      <span>Always custom</span>
+      <span class="dot">·</span>
+      <span>Koramangala's favourite</span>
+      <span class="dot">·</span>
+      <span>Made with love</span>
+      <span class="dot">·</span>
+      <span>Baked fresh</span>
+      <span class="dot">·</span>
+      <span>Always custom</span>
+      <span class="dot">·</span>
+      <span>Koramangala's favourite</span>
+      <span class="dot">·</span>
+    </div>
   </section>
 
   <!-- TESTIMONIALS -->
@@ -1529,7 +1593,231 @@
         testiDots[index].classList.add('active');
       });
     });
+
+    // ── GSAP & ANTIGRAVITY ANIMATIONS ──
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      
+      // Helper: Split text into words for word-by-word reveal
+      function splitTextIntoWords(element) {
+        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        const textNodes = [];
+        let node;
+        while (node = walker.nextNode()) {
+          if (node.nodeValue.trim()) {
+            textNodes.push(node);
+          }
+        }
+        
+        textNodes.forEach(node => {
+          const parent = node.parentNode;
+          const text = node.nodeValue;
+          const words = text.split(/(\s+)/);
+          const fragment = document.createDocumentFragment();
+          
+          words.forEach(word => {
+            if (word.trim() === '') {
+              fragment.appendChild(document.createTextNode(word));
+            } else {
+              const wrapper = document.createElement('span');
+              wrapper.style.display = 'inline-block';
+              wrapper.style.overflow = 'hidden';
+              wrapper.style.verticalAlign = 'bottom';
+              
+              const inner = document.createElement('span');
+              inner.className = 'reveal-word';
+              inner.style.display = 'inline-block';
+              inner.textContent = word;
+              
+              wrapper.appendChild(inner);
+              fragment.appendChild(wrapper);
+            }
+          });
+          parent.replaceChild(fragment, node);
+        });
+      }
+
+      // Apply splitting to hero title, about heading, section titles, and order heading
+      const revealTargets = document.querySelectorAll('#heroTitle, .about-heading, .section-title, .order-heading');
+      revealTargets.forEach(splitTextIntoWords);
+
+      // Animate hero title immediately on load
+      gsap.from('#heroTitle .reveal-word', {
+        opacity: 0,
+        y: 18,
+        rotation: 2,
+        stagger: 0.06,
+        duration: 0.55,
+        ease: "power2.out",
+        delay: 0.2
+      });
+
+      // Scroll-triggered reveals for other titles
+      document.querySelectorAll('.about-heading, .section-title, .order-heading').forEach(el => {
+        gsap.from(el.querySelectorAll('.reveal-word'), {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          opacity: 0,
+          y: 18,
+          rotation: 2,
+          stagger: 0.06,
+          duration: 0.55,
+          ease: "power2.out"
+        });
+      });
+
+      // Section Entrances (fade up with rotation settling to 0)
+      const sectionsToAnimate = document.querySelectorAll('#about, .menu-section, .testimonials, #order, .cta-section');
+      sectionsToAnimate.forEach(section => {
+        let staggerChildren = [];
+        if (section.id === 'about') {
+          staggerChildren = section.querySelectorAll('.stat-card');
+        } else if (section.classList.contains('menu-section')) {
+          staggerChildren = section.querySelectorAll('.menu-card');
+        } else if (section.id === 'order') {
+          staggerChildren = section.querySelectorAll('.order-step, .order-form-container');
+        } else if (section.classList.contains('cta-section')) {
+          staggerChildren = section.querySelectorAll('.social-pill, .btn-primary');
+        }
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        });
+
+        tl.from(section, {
+          opacity: 0,
+          y: 40,
+          rotation: 3,
+          transformOrigin: "left center",
+          duration: 0.75,
+          ease: "power3.out"
+        });
+
+        if (staggerChildren.length > 0) {
+          tl.from(staggerChildren, {
+            opacity: 0,
+            y: 20,
+            stagger: 0.1,
+            duration: 0.5,
+            ease: "power2.out"
+          }, "-=0.4");
+        }
+      });
+
+      // ── ANTIGRAVITY FLOATING ELEMENTS ──
+      class FloatingElement {
+        constructor(element, index) {
+          this.element = element;
+          this.index = index;
+          this.driftX = 0;
+          this.driftY = 0;
+          this.repelX = 0;
+          this.repelY = 0;
+          
+          this.periodX = 4000 + Math.random() * 3000;
+          this.periodY = 4000 + Math.random() * 3000;
+          this.ampX = 4 + Math.random() * 2;
+          this.ampY = 4 + Math.random() * 2;
+          this.phaseX = Math.random() * Math.PI * 2;
+          this.phaseY = Math.random() * Math.PI * 2;
+          
+          this.element.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+        }
+        
+        updateDrift(time) {
+          this.driftX = Math.sin(time / this.periodX + this.phaseX) * this.ampX;
+          this.driftY = Math.cos(time / this.periodY + this.phaseY) * this.ampY;
+          this.applyTransform();
+        }
+        
+        updateRepel(mouseX, mouseY) {
+          const rect = this.element.getBoundingClientRect();
+          const elemX = rect.left + rect.width / 2;
+          const elemY = rect.top + rect.height / 2;
+          
+          const dx = elemX - mouseX;
+          const dy = elemY - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          const radius = 180;
+          if (dist < radius) {
+            const proximity = 1 - (dist / radius);
+            const force = proximity * 12;
+            
+            const ux = dist > 0 ? dx / dist : 0;
+            const uy = dist > 0 ? dy / dist : 0;
+            
+            this.repelX = ux * force;
+            this.repelY = uy * force;
+          } else {
+            this.repelX *= 0.85;
+            this.repelY *= 0.85;
+            if (Math.abs(this.repelX) < 0.1) this.repelX = 0;
+            if (Math.abs(this.repelY) < 0.1) this.repelY = 0;
+          }
+          this.applyTransform();
+        }
+        
+        resetRepel() {
+          this.repelX = 0;
+          this.repelY = 0;
+          this.element.style.transition = 'transform 1.2s ease';
+          this.applyTransform();
+          setTimeout(() => {
+            this.element.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+          }, 1200);
+        }
+        
+        applyTransform() {
+          const totalX = this.driftX + this.repelX;
+          const totalY = this.driftY + this.repelY;
+          this.element.style.transform = `translate3d(${totalX}px, ${totalY}px, 0)`;
+        }
+      }
+
+      const driftElements = [];
+
+      // Blobs
+      document.querySelectorAll('.b1, .b2, .b3, .b4, .b5').forEach((el, i) => {
+        driftElements.push(new FloatingElement(el, i));
+      });
+
+      // Pills
+      document.querySelectorAll('.fp1, .fp2, .fp3').forEach((el, i) => {
+        driftElements.push(new FloatingElement(el, i + 5));
+      });
+
+      // Bunny wrapper
+      const bunnyWrapper = document.getElementById('bunnyRepelWrapper');
+      if (bunnyWrapper) {
+        driftElements.push(new FloatingElement(bunnyWrapper, 8));
+      }
+
+      const hero = document.querySelector('.hero-wrapper');
+      if (hero) {
+        hero.addEventListener('mousemove', (e) => {
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;
+          driftElements.forEach(item => item.updateRepel(mouseX, mouseY));
+        });
+        
+        hero.addEventListener('mouseleave', () => {
+          driftElements.forEach(item => item.resetRepel());
+        });
+      }
+
+      function tickDrift(time) {
+        driftElements.forEach(item => item.updateDrift(time));
+        requestAnimationFrame(tickDrift);
+      }
+      requestAnimationFrame(tickDrift);
+    }
   </script>
-  <script src="cursor.js"></script>
 </body>
 </html>

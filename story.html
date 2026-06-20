@@ -6,8 +6,18 @@
   <title>Our Story — 2 Rabbits Bakes</title>
   <meta name="description" content="The story behind 2 Rabbits Bakes — a little pink café in Koramangala, Bangalore. How it started, why the pink, and why we're still baking." />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  
+  <!-- GSAP Core + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>gsap.registerPlugin(ScrollTrigger);</script>
   <link rel="stylesheet" href="story.css" />
-  <link rel="stylesheet" href="cursor.css" />
+  
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -191,87 +201,136 @@
        SCROLL ANIMATIONS
        ═══════════════════════════════════════════ -->
   <script>
-    // 1. Story blocks — fade in with stagger
-    const storyBlocks = document.querySelectorAll('.story-block');
-    const blockObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Stagger by sibling index
-          const allBlocks = [...document.querySelectorAll('.story-block')];
-          const idx = allBlocks.indexOf(entry.target);
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, idx * 120);
-          blockObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    storyBlocks.forEach(block => blockObserver.observe(block));
-
-    // 2. Stats counter animation
-    function easeOutQuart(t) {
-      return 1 - Math.pow(1 - t, 4);
-    }
-
-    function animateCounter(el) {
-      const target = parseFloat(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      const isDecimal = el.dataset.decimal === 'true';
-      const duration = 1500;
-      const start = performance.now();
-
-      function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = easeOutQuart(progress);
-        const current = eased * target;
-
-        if (isDecimal) {
-          el.textContent = current.toFixed(1) + suffix;
-        } else {
-          el.textContent = Math.floor(current) + suffix;
-        }
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      }
-      requestAnimationFrame(update);
-    }
-
-    let statsAnimated = false;
-    const statsSection = document.getElementById('statsSection');
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !statsAnimated) {
-          statsAnimated = true;
-          const statNumbers = document.querySelectorAll('.stat-number');
-          statNumbers.forEach(el => animateCounter(el));
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    if (statsSection) statsObserver.observe(statsSection);
-
-    // 3. Closing lines — slide up on scroll
-    const closingLines = document.getElementById('closingLines');
-    const closingObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          closingObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    if (closingLines) closingObserver.observe(closingLines);
-
-    // 4. Nav shrink on scroll
+    // 1. NAV SHRINK
     window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar');
       if (!navbar) return;
       navbar.style.padding = window.scrollY > 60 ? '0.75rem 4rem' : '1.4rem 4rem';
     });
+
+    // ── GSAP ANIMATIONS ──
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      
+      // Helper: Split text into words for word-by-word reveal
+      function splitTextIntoWords(element) {
+        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        const textNodes = [];
+        let node;
+        while (node = walker.nextNode()) {
+          if (node.nodeValue.trim()) {
+            textNodes.push(node);
+          }
+        }
+        
+        textNodes.forEach(node => {
+          const parent = node.parentNode;
+          const text = node.nodeValue;
+          const words = text.split(/(\s+)/);
+          const fragment = document.createDocumentFragment();
+          
+          words.forEach(word => {
+            if (word.trim() === '') {
+              fragment.appendChild(document.createTextNode(word));
+            } else {
+              const wrapper = document.createElement('span');
+              wrapper.style.display = 'inline-block';
+              wrapper.style.overflow = 'hidden';
+              wrapper.style.verticalAlign = 'bottom';
+              
+              const inner = document.createElement('span');
+              inner.className = 'reveal-word';
+              inner.style.display = 'inline-block';
+              inner.textContent = word;
+              
+              wrapper.appendChild(inner);
+              fragment.appendChild(wrapper);
+            }
+          });
+          parent.replaceChild(fragment, node);
+        });
+      }
+
+      // Apply splitting to story headings and block body paragraphs
+      const revealTargets = document.querySelectorAll('.hero-heading, .block-heading, .block-body, .stats-heading, .closing-lines');
+      revealTargets.forEach(splitTextIntoWords);
+
+      // Animate hero heading on load
+      gsap.from('.hero-heading .reveal-word', {
+        opacity: 0,
+        y: 18,
+        rotation: 2,
+        stagger: 0.06,
+        duration: 0.55,
+        ease: "power2.out",
+        delay: 0.2
+      });
+
+      // Scroll-triggered reveals for other text
+      document.querySelectorAll('.block-heading, .block-body, .stats-heading, .closing-lines').forEach(el => {
+        gsap.from(el.querySelectorAll('.reveal-word'), {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          opacity: 0,
+          y: 18,
+          rotation: 2,
+          stagger: 0.06,
+          duration: 0.55,
+          ease: "power2.out"
+        });
+      });
+
+      // Section Entrances (fade up with rotation settling to 0)
+      const sectionsToAnimate = document.querySelectorAll('.story-block, .stats-section, .quote-section, .closing-section');
+      sectionsToAnimate.forEach(section => {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          },
+          opacity: 0,
+          y: 40,
+          rotation: 3,
+          transformOrigin: "left center",
+          duration: 0.75,
+          ease: "power3.out"
+        });
+      });
+
+      // Stats Counter Animation using GSAP ScrollTrigger
+      document.querySelectorAll('.stat-number').forEach(el => {
+        const target = parseFloat(el.getAttribute('data-target'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        const isDecimal = el.getAttribute('data-decimal') === 'true';
+        const valObj = { val: 0 };
+        
+        gsap.to(valObj, {
+          val: target,
+          duration: 2,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          onUpdate: () => {
+            el.innerText = (isDecimal ? valObj.val.toFixed(1) : Math.floor(valObj.val)) + suffix;
+          }
+        });
+      });
+    } else {
+      // Fallback for prefers-reduced-motion
+      document.querySelectorAll('.story-block').forEach(block => block.classList.add('visible'));
+      // Populate counters immediately
+      document.querySelectorAll('.stat-number').forEach(el => {
+        const target = el.getAttribute('data-target');
+        const suffix = el.getAttribute('data-suffix') || '';
+        el.innerText = target + suffix;
+      });
+    }
   </script>
-  <script src="cursor.js"></script>
 </body>
 </html>

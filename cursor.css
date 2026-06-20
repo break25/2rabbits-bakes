@@ -1,12 +1,1 @@
-/* ── 2 Rabbits Bakes — Custom Cursor ──────────────────
- * Hides the default OS cursor on non-touch desktop devices.
- * The blush particle trail dots are created + styled via cursor.js.
- * On touch devices: cursor.js bails out, this media query also
- * keeps the default touch cursor untouched.
- * ──────────────────────────────────────────────────── */
-@media (hover: hover) and (pointer: fine) {
-  *,
-  *:hover {
-    cursor: none !important;
-  }
-}
+/* Custom cursor CSS disabled per user request */
