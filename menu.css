@@ -160,14 +160,15 @@ body {
   position: sticky;
   top: 72px;
   z-index: 90;
-  background: var(--cream);
-  border-bottom: 1px solid var(--pink-mid);
+  background: var(--pink-light); /* matches first section (#cakes, bg-pink) on load */
+  border-bottom: 1px solid rgba(196,132,142,0.2);
   padding: 0.75rem 4rem;
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
   white-space: nowrap;
   scrollbar-width: none;
+  margin-bottom: 0;
 }
 .sticky-tabs::-webkit-scrollbar {
   display: none;
@@ -203,9 +204,14 @@ body {
 }
 
 /* SECTION STRUCTURE */
+.menu-content {
+  margin-top: 0;
+}
+
 .menu-section {
   position: relative;
-  padding-top: 2rem; 
+  padding-top: 2rem;
+  /* Ensure first section butts flush against sticky bar */
 }
 
 .bg-pink {
@@ -409,7 +415,8 @@ body {
 .item-price {
   font-family: var(--sans);
   font-size: 0.78rem;
-  color: var(--rose);
+  font-weight: 500;
+  color: var(--deep-rose);
   margin-top: 0.5rem;
   text-align: center;
   letter-spacing: 0.04em;
